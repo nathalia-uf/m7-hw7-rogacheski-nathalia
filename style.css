@@ -80,6 +80,9 @@ main > section.hero {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
   /* make this banner stick to the top! */
 }
 
@@ -131,6 +134,7 @@ span.tooltip {
   color: var(--danger-color);
   position: relative;
   cursor: pointer;
+  display: inline-block;
 }
 
 /* underline span on hover/focus */
@@ -138,10 +142,22 @@ span.tooltip:hover,
 span.tooltip:focus {
   text-decoration: underline;
 }
+
 /* show tooltip on hover/focus */
 span.tooltip:hover > span,
 span.tooltip:focus > span {
-  display: inline;
+  display: inline-block;
+  visibility: visible;
+  position: absolute;
+  margin-left: -100px;
+  left: 50%;
+  background-color: navy;
+  color: white;
+  text-align: center;
+  width: 200px;
+  padding: 5px 0;
+  border-radius: 6px;
+  bottom: 30px;
 }
 
 /* styling for tooltip bubble */
@@ -152,6 +168,13 @@ span.tooltip span {
 /* styling for tooltip bubble arrow */
 span.tooltip span::after {
   content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: navy transparent transparent transparent;
 }
 
 h1 + p::first-letter {
@@ -163,8 +186,3 @@ h1 + p::first-letter {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
  
-section.hero {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-}
